@@ -20,7 +20,26 @@
 \author{Archer}
 \begin{document}
 \maketitle
-%\nocite{*}
+\begin{figure}[H]
+	\begin{minipage}{0.33\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{./fig/fval_c4}
+		\caption{function value}
+	\end{minipage}
+	\begin{minipage}{0.33\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{./fig/gnorm_c4}
+		\caption{gradient norm}
+	\end{minipage}
+	\begin{minipage}{0.33\linewidth}
+		\centering
+		\includegraphics[width=1\linewidth]{./fig/err_c4}
+		\caption{classification error}
+	\end{minipage}
+	\caption*{Results on Covtype when $\lambda=0.01$}
+\end{figure}
+\maketitle
+\nocite{*}
 \bibliographystyle{plain}  
 \bibliography{ref}
 \end{document}
