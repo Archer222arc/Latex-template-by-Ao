@@ -23,10 +23,8 @@ fprintf(table,"\\begin{table}");
 if H ~= "None"
     fprintf(H);
 end
+fprintf(table,"\n");
 
-if isfield(opt,"label")
-    fprintf(table,"\\label{"+string(opt.label)+"}\n");
-end
 fprintf(table,"\\centering\n");
 fprintf(table,"\\begin{tabular}{");
 for i = 1 : n+1
@@ -41,7 +39,7 @@ if col_label == 1
     hline;
     fprintf(table,"\\multirow{%d}{*}{ "+string(title1{1})+"}",col_label+1);
     for i = 2:length(title1)
-        fprintf(table," &\\multicolumn{%d}{c|}{"+string(title1{i})+"}",length1{i});
+        fprintf(table," &\\multicolumn{%d}{c|}{"+string(title1{i})+"}",length1{i-1});
     end
     fprintf(table,"\\\\\\cline{2-"+string(n+1)+"}\n");
     for i = 1:length(title2)
@@ -74,7 +72,12 @@ else
 end
 fprintf(table,"\\end{tabular}\n");
 if isfield(opt,"caption")
-    fprintf(table,"\\caption{"+string(opt.caption)+"}\n");
+    if isfield(opt,"label")
+        fprintf(table,"\\caption{"+string(opt.caption));
+        fprintf(table,"\\label{"+string(opt.label)+"}}\n");
+    else
+        fprintf(table,"\\caption{"+string(opt.caption)+"}\n");
+    end
 end
 fprintf(table,"\\end{table}\n");
 fclose(table);
@@ -89,3 +92,4 @@ function hline
 end
    
 end
+
