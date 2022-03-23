@@ -1,6 +1,6 @@
 function maketable(data,label,opt)
 % this function prints a table in latex
-if ~isfield(label,"tltle2");    col_label = 1;  else;   col_label=0;end
+if isfield(label,"title2");    col_label = 1;  else;   col_label=0;end
 if ~isfield(opt,"filename");    filename = "table"; end
 if ~isfield(opt,"H");   opt.H = "H";    end
 [m,n] = size(data);
